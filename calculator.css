@@ -2,19 +2,31 @@
     display: flex;
     flex-direction: column;
     height: auto;
-    width: min-content;
+    max-width: 300px;
     font-size: 32px;
     border-style: solid;
 }
 
 #display {
-    width: auto;
+    height: 50px;
+    width: 300px;
     display: flex;
     justify-content: flex-end;
     align-items: center;
-    padding-top: 24px;
+    padding-top: 12px;
     padding-bottom: 12px;
-    padding-right: 8px;
+    padding-right: 12px;
+}
+
+#miniDisplay {
+    height: 50px;
+    width: 300px;
+    display: flex;
+    justify-content: flex-end;
+    align-items: center;
+    padding-top: 12px;
+    padding-bottom: 12px;
+    padding-right: 12px;
 }
 
 #numButtons {
@@ -42,8 +54,8 @@
 }
 
 .numButton, .opButton, .endButton {
-    font-size: 18px;
-    padding: 24px;
+    font-size: 26px;
+    padding: 28px;
 }
 
 .numButton {
