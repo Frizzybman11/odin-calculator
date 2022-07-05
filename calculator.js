@@ -4,6 +4,7 @@ let operator = "";
 let total = 0;
 let display = document.querySelector("#display");
 let miniDisplay = document.querySelector("#miniDisplay");
+let sign = 0;
 
 const buttons = document.querySelectorAll("button");
 
@@ -13,9 +14,17 @@ buttons.forEach((button) => {
             num2 = Number(display.textContent)
             operate(num1, num2, operator);
             display.textContent = total;
-            total = 0;
+            num1 = total;
             operator = button.textContent;
+            total = 0;
             miniDisplay.textContent = display.textContent + " " + operator + " ";
+            display.textContent = "";
+        } else if(display.textContent != "" && miniDisplay.textContent != "" && button.className === "opButton"){
+            operator = button.textContent;
+            num1 = Number(miniDisplay.textContent);
+            num2 = Number(display.textContent);
+            operate(num1, num2, operator);
+            miniDisplay.textContent = total;
             display.textContent = "";
         } else if(display.textContent === "" && miniDisplay.textContent != "" && button.className === "opButton"){
             operator = button.textContent;
@@ -27,6 +36,8 @@ buttons.forEach((button) => {
             console.log("num1: " + num1);
             miniDisplay.textContent = display.textContent + " " + operator + " ";
             display.textContent = "";
+        } else if (num1 != "" && display.textContent === "" && button.id === "equalsButton"){
+
         } else if(num1 != "" && display.textContent != "" && button.id === "equalsButton"){
             num2 = Number(display.textContent)
             console.log("num2: " + num2);
@@ -34,8 +45,29 @@ buttons.forEach((button) => {
             console.log("total: " + total);
             miniDisplay.textContent = total;
             display.textContent = "";
+        // if (a){
+        // } else if (num1 != "" && display.textContent != "" && button.className === "opButton"){
+        //     num2 = Number(display.textContent);
+        //     operate(num1, num2, operator);
+        //     operator = button.textContent;
+        //     num1 = total;
+        //     miniDisplay.textContent = total + " " + operator;
+        //     display.textContent = "";
+        // } else if (display.textContent != "" && button.className === "opButton"){
+        //     num1 = Number(display.textContent);
+        //     operator = button.textContent;
+        //     miniDisplay.textContent = display.textContent + " " + operator;
+        //     display.textContent = "";
         } else if(display.textContent.length >= 16){
 
+        } else if(button.textContent === "±"){
+            if (display.textContent != ""){
+            sign = Number(display.textContent)
+            if(Math.sign(sign) === -1){
+                display.textContent = Math.abs(sign)
+            } else
+                display.textContent = -Math.abs(sign)
+            }
         } else if(display === ""){
             display.textContent = button.textContent;
         } else if(display != "") {
