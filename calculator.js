@@ -14,6 +14,9 @@ mainButtons.forEach((button) => {
     button.addEventListener('click', () => {
         if(button.classList.contains("numButton")) {
             displayNum(button);
+        } else if (display.textContent === "Cannot divide by zero" && buttonclassList.contains("opButton")){
+            clearAll();
+            return;
         } else if(display.textContent != "" && num1 != null && num2 != null) {
             operator = button.textContent;
             inputNum1(button);
@@ -27,6 +30,10 @@ mainButtons.forEach((button) => {
             console.log("operator: " + operator);
         } else if(button.classList.contains("opButton") && num1 != null) {
             inputNum2(button);
+            if (num2 === 0 && operator === "/"){
+                display.textContent = "Cannot divide by zero";
+                return;
+            } else
             operate(num1, num2, operator);
             roundTotal(total);
             console.log("total: " + total);
@@ -44,15 +51,7 @@ mainButtons.forEach((button) => {
 endButtons.forEach((button) => {
     button.addEventListener('click', () => {
         if (button.id === "clearButton"){
-            num1 = null;
-            num2 = null;
-            operator = "";
-            total = 0;
-            sign = 0;
-            display.textContent = "";
-            miniDisplay.textContent = "";
-            document.getElementById("display").style.fontSize = "";
-            document.getElementById("miniDisplay").style.fontSize = "";
+            clearAll();
         } else if (num1 != null && num2 != null) {
             operate(num1, num2, operator);
             roundTotal(total);
@@ -125,6 +124,18 @@ function changeSign(button) {
         } else
         display.textContent = -Math.abs(sign);
     }
+}
+
+function clearAll() {
+            num1 = null;
+            num2 = null;
+            operator = "";
+            total = 0;
+            sign = 0;
+            display.textContent = "";
+            miniDisplay.textContent = "";
+            document.getElementById("display").style.fontSize = "";
+            document.getElementById("miniDisplay").style.fontSize = "";
 }
 
 function roundTotal(num) {
