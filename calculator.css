@@ -57,11 +57,11 @@
     flex-direction: column;
 }
 
-.numButton, .opButton, .endButton, .button {
+.numButton, .opButton, .endButton, .functionButton {
     font-size: 26px;
     padding: 28px;
 }
 
-.numButton, .button {
+.numButton, .functionButton {
     background-color: rgb(247, 241, 241);
 }

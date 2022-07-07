@@ -8,6 +8,7 @@ let sign = 0;
 
 const mainButtons = document.querySelectorAll(".mainButton");
 const endButtons = document.querySelectorAll(".endButton");
+const functionButtons = document.querySelectorAll(".functionButton");
 
 mainButtons.forEach((button) => {
     button.addEventListener('click', () => {
@@ -76,6 +77,14 @@ endButtons.forEach((button) => {
             miniDisplay.textContent = num1 + " " + operator + " " + num2 + " =";
             display.textContent = total;
             num1 = total;
+        }
+    })
+})
+
+functionButtons.forEach((button) => {
+    button.addEventListener('click', () => {
+        if (display.textContent != "" && button.id === "signButton") {
+            changeSign(button);
         }
     })
 })
